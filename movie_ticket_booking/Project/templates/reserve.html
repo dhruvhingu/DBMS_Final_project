@@ -1,0 +1,9 @@
+{% if seats %}
+  <p>Selected seats: {{ seats }}</p>
+  <p>No. of Seats:  {{no_of_seats}}   price is {{price}}</p>
+  <div class="booking">
+    <a href="{{ url_for('payment') }}" class="btnbuy">Buy</a>
+</div>
+{% else %}
+  <p>No seats selected</p>
+{% endif %}

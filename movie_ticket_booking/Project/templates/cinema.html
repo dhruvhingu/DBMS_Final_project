@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select City</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        body {
+          background-color: #1c1c1c;
+          color: #fff;
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+    
+        .container {
+          border-style: solid;
+          max-width: 500px;
+          padding: 20px;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          border-color: #cd8c38;
+          
+        }
+    
+        h1 {
+          font-size: 3em;
+          margin-bottom: 20px;
+        }
+    
+        p {
+          font-size: 1.2em;
+          margin-bottom: 30px;
+        }
+    
+        .ap {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #cd8c38;
+          color: #1c1c1c;
+          font-size: 1.2em;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: background-color 0.2s ease;
+        }
+    
+        .ap:hover {
+          background-color:#92601f;
+          color: #1c1c1c;
+        }
+        .dropdown {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 16px;
+            font-size: 20px;
+            border-width: thick;
+            border-style: solid;
+            border-color: #cd8c38;
+            cursor: pointer;
+}
+      </style>
+</head>
+
+<body>
+    {%if dt%}
+    <form action="{{ url_for('shows') }}" method="POST">
+	<h1 > <label class = "container" for="mycity">Select Your City :</label></h1><br><br>
+    <div class="container">
+    
+        <select class="dropdown" name="mycity" id="mycity">
+        {%for j in dt %}
+		<option  value={{j[0]}},{{dt2}}>{{j[0]}}</option>
+        {%endfor%}
+	</select>
+    <br><br>
+    <input class = "ap" type ="submit"  value="Submit">
+    </form></div>
+    {% else %}
+<div id="demo">No search results.</div>
+{% endif %}
+</body>
+</html>

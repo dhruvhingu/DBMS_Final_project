@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Ticket</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/ticket.css">
+	<style>
+		body {
+		  background-image: url('https://i.ibb.co/YkSxX7M/Exit-Ticket.png');
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: cover;
+		}
+		.center {
+			margin: 0;
+  			position: absolute;
+			top: 50%;
+			left: 50%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		  }
+		  .details{
+			font-size: xx-large;
+		  }
+		</style>
+</head>
+<body>
+	
+	<div class="center">
+		<div class="details">
+			<p>Name: {{details[0]}}</p>
+			<p>Movie Title: {{details[1]}}</p>
+			<p>Show Time: {{details[2]}}</p>
+			<p>Show Date: {{details[3]}}</p>
+			<p>Cinema: {{details[4]}}</p>
+			<p>TOTAL_COST {{details[5]}}X{{details[6]}}={{details[7]}}</p>
+		</div>
+	</div>
+</body>
+</html>

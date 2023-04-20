@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select Payment Method</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/payment.css">
+</head>
+<body>
+	<h1>Select Payment Method</h1>
+    <div class = "movie-container">
+	<form action="{{ url_for('success') }}" method="post">
+		<label for="credit-card">
+			<input type="radio" name="payment-method" id="credit-card" value="credit-card">
+			Credit Card
+		</label>
+		<br>
+		<label for="paypal">
+			<input type="radio" name="payment-method" id="paypal" value="paypal">
+			Debit Card
+		</label>
+		<br>
+		<label for="bank-transfer">
+			<input type="radio" name="payment-method" id="bank-transfer" value="bank-transfer">
+			Net banking
+		</label>
+		<br>
+		<button type="submit">Submit Payment</button>
+	</form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+	<title>Profile Page</title>
+	<style>
+		body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://static.vecteezy.com/system/resources/thumbnails/007/105/007/small/luxury-abstract-background-with-golden-and-black-shapes-metal-texture-steel-background-vactor-design-illustration-free-vector.jpg");
+  background-size: cover;
+  background-position: center center;
+  font-family: Georgia, serif;
+  color: #fff;
+  padding: 20px;
+}
+.dropdown {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-color: #cd8c38;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  color: #cd8c38;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 48px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #cd8c38;
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #cd8c38;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-color: #cd8c38;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  color: #cd8c38;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"] {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  border-color: #cd8c38;
+  border-style: solid;
+  color: #cd8c38;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #cd8c38;
+  color: #1c1c1c;
+}
+
+.profile-img {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+table {
+			margin: 20px auto;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		th, td {
+			padding: 30px;
+			text-align: center;
+			border: 1px solid #cd8c38;
+		}
+		
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+		
+		th{
+			color:#cd8c38
+		}
+		
+		@media only screen and (max-width: 600px) {
+			table {
+				display: block;
+				overflow-x: auto;
+			}
+			
+			th, td {
+				min-width: 100px;
+			}
+        }
+#container {
+  text-align: center;
+}
+        #left{float:left;width:250px;}
+			
+        #right{float:right;width:300px;}
+        #center{margin:0 auto;width:150px;}
+
+	</style>
+</head>
+<body>
+    <div id="container">
+        <div id="left">
+            {%if r1%}
+            <!-- <h1>Movies Details</h1> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie <br> ID</th>
+                        <th>Movie <br> Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for j in r1%}
+                    <tr>
+                        <td>{{j[0]}}</td>
+                        <td>{{j[1]}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {%else%}
+            No search results
+            {%endif%}
+        </div>
+        <div id="right">
+            {%if r2%}
+            <!-- <h1>Cinema Details </h1> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cinema <br> ID</th>
+                        <th>Cinema <br> Name</th>
+                        <th>Cinema <br> City</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for j in r2%}
+                    <tr>
+                        <td>{{j[0]}}</td>
+                        <td>{{j[1]}}</td>
+                        <td>{{j[2]}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {%else%}
+            No search results
+            {%endif%}
+        </div>
+	<div id="center">
+        <h1>Add Data</h1>
+		<form method="POST">
+			<label for="movie_id">Movie ID:</label>
+			<input type="number" id="movie_id" name="movie_id" value=""> 
+			<label for="cinema_id">Cinema ID:</label>
+			<input type="number" id="cinema_id" name="cinema_id" value=""> 
+      <label for="show_id">Show Time
+      <select class="dropdown" name="show_time" id="show_time">
+        <option value='Morning'>Morning</option>
+        <option value='Noon'>Noon</option>
+        <option value='Evening'>Evening</option>
+        <option value='Night'>Night</option>
+      </select>
+      </label> 
+      <label for="show_date">Show Date:</label>
+			<input type="date" id="show_date" name="show_date"> 
+			<input type="submit" value="Add" class="btn">
+		</form>
+	</div>
+        
+    
+
+
+    
+</div>
+ 
+</body>
+</html>

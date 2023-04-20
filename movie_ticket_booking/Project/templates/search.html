@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <title>Document</title>
+</head>
+<body class="search">
+  
+  {% if usr%}
+    {%for movie in usr %}
+    <br>
+    
+
+      <!-- <td>
+  <ul>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <ol> <b><u>Movies : </u></b><br><br> {{movie[1]}}</ol><br>
+  <ol> <b><u>Desc : </u></b><br><br> {{movie[2]}}</ol><br>
+  <ol> <b><u>Duration : </u></b><br><br> {{movie[3]}}</ol><br>
+  <ol> <b><u>Language : </u></b><br><br>  {{movie[4]}}</ol><br><br><br>
+  <ol> <a href="#" class="btnbook">Book Now </a>
+  </ul>
+</td> -->
+
+  <table class="current-movie">
+    <td>
+      <div class="current-movie1">
+      
+        <h3 class="movie-title"><u class="underline">{{movie[1]}}</u></h3>
+        <br>
+        <p class="screen-name"><b><u>Genre : </u></b>  {{movie[6]}} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u> Duration : </u></b> {{movie[3]}}<b><u><br><br>Language : </u></b> {{movie[4]}}&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u> Date : </u></b>  {{movie[5]}}<b><u><br><br>Desc : </u></b> {{movie[2]}}</p>
+        <div class="booking">
+            <a href="{{ url_for('select_cinema',data=movie[0]) }}" class="btnbuy">Buy</a>
+        </div>
+        </div>
+    </td>
+    </table>
+  {% endfor %}
+
+{% else %}
+<div id="demo">No search results.</div>
+{% endif %}
+
+</body>
+</html>

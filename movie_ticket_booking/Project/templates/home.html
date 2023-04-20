@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>Movie booking</title>
+</head>
+
+<body>
+    <section class="top-bar">
+        <div class="left-content">
+            <h2 class="title">Movie_Booking</h2>
+            <ul class="navigation">
+                <li><a class="active" href="#">Movies</a></li>
+                <li><a href="{{url_for('city')}}">Theaters</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><form method="post" action="/search/">
+                    
+                    <input type="text" placeholder="Search by Movie" name="search" id="search" class="btn-alt1" required>
+                    <input type="submit" value="Search" class = "btn"><!-- <i class="fa fa-search"></i> -->
+                    
+                </form></li>
+            </ul>
+        </div>
+        <div class="right-content">
+            <div class="profile-img-box">
+            <a href="{{url_for('profile')}}"><img src="data:image/jpeg;base64,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" alt=""></a>
+            </div>
+            <img src="https://i.ibb.co/0rNYhx9/menu.png" alt="" class="menu">
+        </div>
+    </section>
+    <section class="main-container">
+        <div class="sidebar">
+            <form method="POST" action="/filter/">
+                <div class="sidebar-groups">
+                    <h3 class="sg-title">Categories</h3>
+                    <input type="checkbox" id="adventure" name="mycheckbox" value="ADVENTURE">
+                    <label for="adventure">Adventure</label><br>
+                    <input type="checkbox" id="action" name="mycheckbox" value="ACTION">
+                    <label for="action">Action</label><br>
+                    <input type="checkbox" id="animation" name="mycheckbox" value="ANIMATION">
+                    <label for="animation">Animation</label><br>
+                    <input type="checkbox" id="comedy" name="mycheckbox" value="COMEDY">
+                    <label for="comedy">Comedy</label><br>
+                    <input type="checkbox" id="science" name="mycheckbox" value="SCIENCE">
+                    <label for="science">Science Fiction</label><br>
+                    <input type="checkbox" id="thriller" name="mycheckbox" value="THRILLER">
+                    <label for="thriller">Thriller</label><br>
+                    <input type="checkbox" id="horror" name="mycheckbox" value="HORROR">
+                    <label for="history">Horror</label><br>
+                    <input type="checkbox" id="documentary" name="mycheckbox" value="DOCUMENTARY">
+                    <label for="documentary">Documentary</label><br>
+                    <input type="checkbox" id="fantasy" name="mycheckbox" value="FANTASY">
+                    <label for="fantasy">Fantasy</label><br>
+
+                </div>
+                <div class="sidebar-groups">
+                    <h3 class="sg-title">Language</h3>
+                    <input type="checkbox" id="english" name="mycheckbox1" value="english">
+                    <label for="english">English</label><br>
+                    <input type="checkbox" id="gujarati" name="mycheckbox1" value="gujarati">
+                    <label for="gujarati">Gujarati</label><br>
+                    <input type="checkbox" id="hindi" name="mycheckbox1" value="hindi">
+                    <label for="hindi">Hindi</label><br>
+                </div>
+                <div class="sidebar-groups">
+                    <h3 class="sg-title">Time</h3>
+                    <input type="radio" id="Morning" name="time" value="Morning">
+                    <label for="Morning">Morning</label><br>
+                    <input type="radio" id="Night" name="time" value="Night">
+                    <label for="Night">Night</label><br>
+                    <input type="radio" id="Noon" name="time" value="Noon">
+                    <label for="Noon">Noon</label><br>
+                    <input type="radio" id="Evening" name="time" value="Evening">
+                    <label for="Evening">Evening</label><br>
+                </div>
+                <div class="sidebar-groups">
+                    <input type="submit" class="btn-l btn" value = "Apply Filters">
+                </div>
+            </form>
+        </div>
+        <div class="movies-container">
+            <div class="upcoming-img-box">
+                <a href="{{url_for('image_result',data='Avatar2')}}"><img src="https://i.ibb.co/cNkqdQy/upcoming.webp" id="avatar" alt="avatar"></a>
+                <!-- <p class = "upcoming-title">Upcoming Movie</p> -->
+                <div class="buttons">
+                    <a href="{{url_for('select_cinema',data='Avatar2')}}" class="btn">Book Now</a>
+                    <a href="https://www.youtube.com/watch?v=5PSNL1qE6VY" target="_blank" rel="noopener noreferrer" class="btn-alt btn">Play Trailer</a>
+                </div>
+            </div>
+            <div class="current-movies">
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <a href="{{url_for('image_result',data='Jurassic World')}}"><img src="https://i.ibb.co/jZ7hTYx/movie1.jpg" alt=""></a>
+                    </div>
+                    <h3 class="movie-title">Jurassic World</h3>
+                    <p class="screen-name">Screen : Platinum</p>
+                    <div class="booking">
+                        <h2 class="price">Rs 200</h2>
+                        <a href="{{url_for('select_cinema',data='Jurassic World')}}" class="btn">Buy Tickets</a>
+                    </div>
+                </div>
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <a href="{{url_for('image_result',data='Vikram')}}"><img src="https://i.ibb.co/qdZVrMT/movie2.jpg" id="vikram" alt=""></a>
+                    </div>
+                    <h3 class="movie-title">Vikram</h3>
+                    <p class="screen-name">Screen : Gold</p>
+                    <div class="booking">
+                        <h2 class="price">Rs 150</h2>
+                        <a href="{{url_for('select_cinema',data='Vikram')}}" class="btn">Buy Tickets</a>
+                    </div>
+                </div>
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <a href="{{url_for('image_result',data='Firestarter')}}"><img src="https://i.ibb.co/kcfBjwh/movie3.jpg" alt=""></a>
+                    </div>
+                    <h3 class="movie-title">Firestarter</h3>
+                    <p class="screen-name">Screen : Silver</p>
+                    <div class="booking">
+                        <h2 class="price">Rs 250</h2>
+                        <a href="{{url_for('select_cinema',data='Firestarter')}}" class="btn">Buy Tickets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
